@@ -1,0 +1,89 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask Her Out</title>
+
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Animation for the heading */
+        @keyframes celebrateHeading {
+            0% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .celebrate-heading {
+            animation: celebrateHeading 1.5s ease-in-out;
+        }
+    </style>
+     <script>
+        (function() {
+            if (window.performance) {
+                if (performance.navigation.type === performance.navigation.TYPE_RELOAD) {
+                    console.info("Page (yes.html) was reloaded. Redirecting to index.html.");
+                    window.location.href = 'index.html';
+                }
+            }
+        })();
+        </script>
+</head>
+<body>
+   <div class="container">
+    <div class="tenor-gif-embed" data-postid="7402501822404747417" data-share-method="host" data-aspect-ratio="0.983333" data-width="100%"><a href="https://tenor.com/view/bubu-rub-bubu-love-dudu-bubu-sweet-bubu-cuddle-bubu-dudu-sweet-gif-7402501822404747417">Bubu Rub Bubu Love Dudu Sticker</a>from <a href="https://tenor.com/search/bubu+rub-stickers">Bubu Rub Stickers</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+    
+
+    <h1 class="celebrate-heading">Yayyyyy Hurray I knew it</h1>
+    
+   </div> 
+
+
+   <audio id="celebrationSound" src="celebration.mp3" preload="auto"></audio>
+
+
+   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+   
+   <script>
+
+    window.addEventListener('load', function() {
+
+        const sound = document.getElementById('celebrationSound');
+        if (sound) {
+            sound.play().catch(error => {
+
+                console.warn("Audio play prevented:", error);
+            });
+        }
+
+        confetti({
+            particleCount: 150,
+            spread: 90,
+            origin: { y: 0.6 }
+        });
+
+        // A bit more fancy confetti
+        function randomInRange(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        setTimeout(() => { // A little delay for a second burst
+            confetti({
+                angle: randomInRange(55, 125),
+                spread: randomInRange(50, 70),
+                particleCount: randomInRange(50, 100),
+                origin: { y: 0.6 }
+            });
+        }, 300);
+
+         setTimeout(() => { // And another one
+            confetti({
+                angle: randomInRange(55, 125),
+                spread: randomInRange(50, 70),
+                particleCount: randomInRange(75, 120),
+                origin: { y: 0.6 }
+            });
+        }, 600);
+    });
+   </script>
+</body>
+</html>

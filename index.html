@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask Her Out</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <div class="container">
+    <h1>Will you go out with me?</h1>
+    <div class="tenor-gif-embed" data-postid="3454801179029495025" data-share-method="host" data-aspect-ratio="1" data-width="100%"><a href="https://tenor.com/view/love-gif-3454801179029495025">Love Sticker</a>from <a href="https://tenor.com/search/love-stickers">Love Stickers</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+    
+    <p id="timerDisplay">Time left: 15s</p> <!-- Timer Display -->
+
+    <div class="btn">
+        <a href="yes.html" id="yesButton">Yes</a>
+        <a href="no1.html" id="noButtonInitial">No</a> <!-- Keep this as a link for now -->
+    </div>
+   </div> 
+
+   <script>
+    const timerDuration = 15; // seconds
+    const timerDisplay = document.getElementById('timerDisplay');
+    let timeLeft = timerDuration;
+    let timerInterval;
+
+    function updateTimerDisplay() {
+        timerDisplay.textContent = `Time left: ${timeLeft}s`;
+    }
+
+    function startTimer() {
+        updateTimerDisplay(); // Initial display
+        timerInterval = setInterval(() => {
+            timeLeft--;
+            updateTimerDisplay();
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                window.location.href = 'too_late.html';
+            }
+        }, 1000);
+    }
+
+    // Clear timer if user navigates away by clicking Yes or No
+    document.getElementById('yesButton').addEventListener('click', () => {
+        clearInterval(timerInterval);
+    });
+    document.getElementById('noButtonInitial').addEventListener('click', () => {
+        clearInterval(timerInterval);
+    });
+
+    // Start the timer when the page loads
+    window.addEventListener('load', startTimer);
+   </script>
+</body>
+</html>

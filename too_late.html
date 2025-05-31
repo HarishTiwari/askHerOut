@@ -1,0 +1,42 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Too Late!</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .container h1 {
+            font-size: 2em;
+            color: #555;
+        }
+        .container img {
+            max-width: 250px; /* Adjust as needed */
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+    </style>
+     <script>
+        (function() {
+            if (window.performance) {
+                if (performance.navigation.type === performance.navigation.TYPE_RELOAD) {
+                    console.info("Page (yes.html) was reloaded. Redirecting to index.html.");
+                    window.location.href = 'index.html';
+                }
+            }
+        })();
+        </script>
+</head>
+<body>
+   <div class="container">
+    <!-- You can find a "sad" or "time out" GIF -->
+    <div class="tenor-gif-embed" data-postid="22592845" data-share-method="host" data-aspect-ratio="1" data-width="100%"><a href="https://tenor.com/view/tkthao219-bubududu-sad-cry-gif-22592845">Tkthao219 Bubududu Sticker</a>from <a href="https://tenor.com/search/tkthao219-stickers">Tkthao219 Stickers</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+    <h1>Oh no! Time ran out...</h1>
+    <p>Maybe next time?</p>
+    <br>
+    <div class="btn">
+        <a href="index.html">Try Again?</a>
+    </div>
+   </div> 
+</body>
+</html>

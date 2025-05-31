@@ -1,0 +1,106 @@
+--- START OF FILE style.css ---
+
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffe5e5; /* Light pink background */
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px; /* Use padding instead of margin for inner spacing */
+    width: 90vw; /* Max width */
+    max-width: 500px; /* Ensure it doesn't get too wide on large screens */
+    min-height: 80vh; /* Ensure it takes up good vertical space */
+    position: relative; /* Needed for absolute positioning of moving button */
+    background-color: #fff9f9; /* Slightly off-white background for the card */
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.container .tenor-gif-embed{
+    display: flex;
+    max-width: 200px; /* Keep GIF size consistent */
+    width: 100%; /* Allow it to shrink if container is smaller */
+    margin-bottom: 15px; /* Space below GIF */
+}
+
+.container h1 {
+    color: #333;
+    margin-bottom: 10px; /* Space below heading */
+}
+
+.container p#timerDisplay, .container p#feedbackMessage { /* Styling for timer and messages */
+    font-size: 1.1em;
+    color: #e91e63; /* A distinct color */
+    min-height: 1.5em; /* Reserve space to prevent layout jump */
+    margin-top: 10px;
+}
+
+.container .btn {
+    display: flex;
+    gap: 20px; /* Reduced gap slightly */
+    margin-top: 15px; /* Space above buttons */
+}
+
+.btn a {
+    text-decoration:  none;
+    color: #fff; /* White text */
+    background: #ff7eb9; /* Pink background for buttons */
+    padding: 12px 28px; /* Slightly larger padding */
+    border-radius: 25px; /* More rounded buttons */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    transition: transform 0.2s ease-out, background-color 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.btn a:hover {
+    background-color: #ff5ca8; /* Darker pink on hover */
+    transform: scale(1.08) translateY(-2px); /* Scale up and slightly lift */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+}
+
+.btn a:active {
+    transform: scale(0.98); /* Slightly shrink on click */
+    background-color: #e04a90; /* Even darker on active click */
+}
+
+/* Specific styling for "Yes" and "No" buttons if needed, e.g., different initial colors */
+.btn a[href*="yes.html"] { /* Target Yes button */
+    /* background-color: #4CAF50;  Example: Green for Yes */
+}
+.btn a[href*="yes.html"]:hover {
+    /* background-color: #45a049; */
+}
+
+.btn a#move-random, .btn a[href*="no"] { /* Target No buttons */
+    /* background-color: #f44336; Example: Red for No */
+}
+.btn a#move-random:hover, .btn a[href*="no"]:hover {
+    /* background-color: #e53935; */
+}
+
+/* Style for the feedback message area */
+#feedbackMessage {
+    margin-top: 15px;
+    font-style: italic;
+    color: #666;
+    height: 1.5em; /* Reserve space */
+}
+
+--- END OF FILE style.css ---
