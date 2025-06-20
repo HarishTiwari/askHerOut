@@ -3,250 +3,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ask Her Out</title>
-
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Animation for the heading */
+       
         @keyframes celebrateHeading {
             0% { transform: scale(1); opacity: 0.5; }
             50% { transform: scale(1.1); opacity: 1; }
             100% { transform: scale(1); opacity: 1; }
         }
+        .celebrate-heading { animation: celebrateHeading 1.5s ease-in-out; }
 
-        .celebrate-heading {
-            animation: celebrateHeading 1.5s ease-in-out;
-        }
-
-        /* Styles for the new interest/chat section */
-        #interestSection, #chatSuggestionsSection {
+        /* Style for the new button */
+        .plan-date-btn {
+            display: inline-block; /* Or block if you want it on its own line */
             margin-top: 30px;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            width: 90%;
-            max-width: 450px;
-            text-align: left; /* Align text left within these sections */
-        }
-
-        #interestSection h2, #chatSuggestionsSection h2 {
-            font-size: 1.2em;
-            color: #333;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        #interestForm label {
-            display: block;
-            margin-bottom: 10px;
-            font-size: 1em;
-            color: #555;
-        }
-        #interestForm input[type="checkbox"] {
-            margin-right: 8px;
-            transform: scale(1.2); /* Make checkboxes slightly bigger */
-        }
-        #interestForm button {
-            display: block;
-            margin: 20px auto 0;
-            padding: 10px 20px;
-            background-color: #ff7eb9; /* Same as your .btn a */
+            padding: 12px 28px;
+            background-color: #ff7eb9;
             color: white;
-            border: none;
-            border-radius: 20px;
-            font-size: 1em;
-            cursor: pointer;
-            transition: background-color 0.2s;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-out, background-color 0.2s ease-out;
+            opacity: 0; /* Initially hidden */
+            animation: fadeInButton 0.5s ease-out 1.5s forwards; /* Fade in after 1.5s */
         }
-        #interestForm button:hover {
+        .plan-date-btn:hover {
             background-color: #ff5ca8;
+            transform: scale(1.05);
         }
-
-        .chat-message {
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 8px;
-            line-height: 1.4;
+        @keyframes fadeInButton {
+            to { opacity: 1; }
         }
-        .bot-message {
-            background-color: #e9eaf0; /* Light grey for bot */
-            color: #333;
-            text-align: left;
-        }
-        .suggestion-item {
-            background-color: #fdf6ff; /* Very light pink for suggestions */
-            border: 1px solid #ffc0e5;
-            padding: 10px;
-            margin-top: 8px;
-            border-radius: 5px;
-        }
-        .suggestion-item strong {
-            color: #d63384; /* A stronger pink for the idea name */
-        }
-
     </style>
-     <script>
-        (function() {
-            if (window.performance) {
-                // Check if performance.navigation.type is 1 (reload)
-                // The new API performance.getEntriesByType("navigation")[0].type === "reload"
-                // For simplicity, sticking to the one you have, but be aware it's deprecated.
-                if (performance.navigation.type === 1) { // 1 is TYPE_RELOAD
-                    console.info("Page (yes.html) was reloaded. Redirecting to index.html.");
-                    window.location.href = 'index.html';
-                }
+    <script>
+        (function() { /* ... (your refresh redirect script) ... */
+            if (window.performance && performance.navigation.type === 1) {
+                window.location.href = 'index.html';
             }
         })();
-        </script>
+    </script>
 </head>
 <body>
    <div class="container">
     <div class="tenor-gif-embed" data-postid="7402501822404747417" data-share-method="host" data-aspect-ratio="0.983333" data-width="100%"><a href="https://tenor.com/view/bubu-rub-bubu-love-dudu-bubu-sweet-bubu-cuddle-bubu-dudu-sweet-gif-7402501822404747417">Bubu Rub Bubu Love Dudu Sticker</a>from <a href="https://tenor.com/search/bubu+rub-stickers">Bubu Rub Stickers</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
-    
     <h1 class="celebrate-heading">Yayyyyy Hurray I knew it</h1>
 
-    <!-- NEW: Interest Selection Section (initially hidden) -->
-    <div id="interestSection" style="display: none;">
-        <h2>Amazing! To help plan our first awesome date, what kind of things do you enjoy?</h2>
-        <form id="interestForm">
-            <label><input type="checkbox" name="interest" value="adventure"> Adventure & Outdoorsy</label>
-            <label><input type="checkbox" name="interest" value="foodie"> Foodie & Drinks</label>
-            <label><input type="checkbox" name="interest" value="artsy"> Artsy & Cultural</label>
-            <label><input type="checkbox" name="interest" value="chill"> Relaxing & Chill</label>
-            <label><input type="checkbox" name="interest" value="active"> Active & Sporty</label>
-            <button type="submit">Find Date Ideas!</button>
-        </form>
-    </div>
+    <!-- NEW: Button to go to chat page -->
+    <a href="chat.html" class="plan-date-btn">Let's Plan Our First Date! 🥰</a>
 
-    <!-- NEW: Chat Suggestions Section (initially hidden) -->
-    <div id="chatSuggestionsSection" style="display: none;">
-        <h2>Here are some ideas based on what you like:</h2>
-        <div id="suggestionsOutput">
-            <!-- Date suggestions will be injected here by JavaScript -->
-        </div>
-    </div>
-    
-   </div> 
-
+   </div>
    <audio id="celebrationSound" src="celebration.mp3" preload="auto"></audio>
    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-   
    <script>
-    // --- Existing Celebration Script ---
     window.addEventListener('load', function() {
         const sound = document.getElementById('celebrationSound');
-        if (sound) {
-            sound.play().catch(error => {
-                console.warn("Audio play prevented:", error);
-            });
-        }
-
-        // Confetti logic (shortened for brevity, use your existing full confetti)
+        if (sound) { sound.play().catch(console.warn); }
         confetti({ particleCount: 150, spread: 90, origin: { y: 0.6 }});
         // ... (your other confetti calls) ...
-
-        // NEW: After celebration, show the interest form
-        setTimeout(() => {
-            document.getElementById('interestSection').style.display = 'block';
-        }, 1500); // Show after 1.5 seconds (adjust as needed)
     });
-
-    // --- NEW: Date Idea Logic ---
-    const dateIdeasDB = {
-        adventure: [
-            { name: "Scenic Hike", description: "Explore a beautiful trail and enjoy nature." },
-            { name: "Kayaking/Paddleboarding", description: "Get on the water for some fun." },
-            { name: "Outdoor Escape Game", description: "Solve puzzles in a park or city setting."}
-        ],
-        foodie: [
-            { name: "Cooking Class", description: "Learn to make a new dish together." },
-            { name: "Food Truck Hopping", description: "Sample a variety of tasty street foods." },
-            { name: "Wine/Beer Tasting", description: "Discover new favorite drinks." }
-        ],
-        artsy: [
-            { name: "Museum or Art Gallery Visit", description: "Appreciate some art and culture." },
-            { name: "Attend a Local Play or Concert", description: "Enjoy live performances." },
-            { name: "Pottery or Painting Workshop", description: "Get creative together."}
-        ],
-        chill: [
-            { name: "Picnic in the Park", description: "Relax with good food and conversation." },
-            { name: "Cozy Movie Night In", description: "Snuggle up with a great film." },
-            { name: "Visit a Botanical Garden", description: "Enjoy a peaceful stroll among plants."}
-        ],
-        active: [
-            { name: "Mini Golf or Bowling", description: "Some light-hearted competitive fun." },
-            { name: "Ice Skating or Roller Skating", description: "Glide around and have a laugh." },
-            { name: "Try a Dance Class", description: "Learn some new moves together." }
-        ],
-        generic: [ // Fallback ideas
-            { name: "Explore a New Cafe", description: "Grab coffee and chat." },
-            { name: "Stroll Through a Farmer's Market", description: "See local produce and crafts." },
-            { name: "Volunteer Together", description: "Do something good for the community."}
-        ]
-    };
-
-    const interestForm = document.getElementById('interestForm');
-    const suggestionsOutput = document.getElementById('suggestionsOutput');
-    const interestSection = document.getElementById('interestSection');
-    const chatSuggestionsSection = document.getElementById('chatSuggestionsSection');
-
-    interestForm.addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent actual form submission
-
-        const selectedInterests = [];
-        const checkboxes = interestForm.querySelectorAll('input[name="interest"]:checked');
-        checkboxes.forEach(checkbox => {
-            selectedInterests.push(checkbox.value);
-        });
-
-        suggestionsOutput.innerHTML = ''; // Clear previous suggestions
-
-        let ideasGenerated = 0;
-
-        if (selectedInterests.length > 0) {
-            selectedInterests.forEach(interest => {
-                if (dateIdeasDB[interest] && dateIdeasDB[interest].length > 0) {
-                    // Pick one random idea per selected interest category
-                    const categoryIdeas = dateIdeasDB[interest];
-                    const randomIndex = Math.floor(Math.random() * categoryIdeas.length);
-                    const idea = categoryIdeas[randomIndex];
-                    addSuggestionToChat(idea);
-                    ideasGenerated++;
-                }
-            });
-        }
-        
-        // If no specific interests were matched or few ideas generated, add a generic one
-        if (ideasGenerated < 2 && dateIdeasDB.generic.length > 0) {
-            const genericIdeas = dateIdeasDB.generic;
-            const randomIndex = Math.floor(Math.random() * genericIdeas.length);
-            addSuggestionToChat(genericIdeas[randomIndex]);
-            ideasGenerated++;
-        }
-        if (ideasGenerated === 0) { // If still no ideas (e.g. user selected nothing, though form requires at least one)
-             addBotMessageToChat("Hmm, let's start with a classic: grabbing a coffee to chat more?");
-        }
-
-
-        // Hide interest form and show suggestions
-        interestSection.style.display = 'none';
-        chatSuggestionsSection.style.display = 'block';
-    });
-
-    function addSuggestionToChat(idea) {
-        const ideaElement = document.createElement('div');
-        ideaElement.classList.add('chat-message', 'suggestion-item');
-        ideaElement.innerHTML = `<strong>${idea.name}:</strong> ${idea.description}`;
-        suggestionsOutput.appendChild(ideaElement);
-    }
-    
-    function addBotMessageToChat(message) {
-        const messageElement = document.createElement('div');
-        messageElement.classList.add('chat-message', 'bot-message');
-        messageElement.textContent = message;
-        suggestionsOutput.appendChild(messageElement);
-    }
-
    </script>
 </body>
 </html>

@@ -1,0 +1,142 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Planner Chat</title>
+    <link rel="stylesheet" href="style.css"> <!-- Re-use general styles -->
+    <style>
+        /* Chat specific styles */
+        body.chat-page { /* Specific body style for chat page if needed */
+            background-color: #f0f2f5; /* A slightly different background */
+        }
+        .chat-container {
+            width: 90%;
+            max-width: 600px; /* Max width for the chat window */
+            height: 85vh; /* Take up most of the viewport height */
+            max-height: 700px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* Important for keeping rounded corners with scrolling */
+        }
+        .chat-header {
+            background-color: #ff7eb9; /* Match button color */
+            color: white;
+            padding: 15px;
+            font-size: 1.2em;
+            text-align: center;
+            font-weight: bold;
+        }
+        .chat-messages {
+            flex-grow: 1; /* Takes up available space */
+            padding: 20px;
+            overflow-y: auto; /* Enables scrolling for messages */
+            display: flex;
+            flex-direction: column; /* Messages stack vertically */
+        }
+        .message {
+            padding: 10px 15px;
+            border-radius: 18px;
+            margin-bottom: 10px;
+            max-width: 75%; /* Messages don't take full width */
+            line-height: 1.4;
+            word-wrap: break-word; /* Break long words */
+        }
+        .bot-message {
+            background-color: #e9eaf0; /* Light grey for bot */
+            color: #333;
+            align-self: flex-start; /* Bot messages on the left */
+            border-bottom-left-radius: 5px; /* Different rounding for "tail" */
+        }
+        .user-message {
+            background-color: #ff7eb9; /* Pink for user */
+            color: white;
+            align-self: flex-end; /* User messages on the right */
+            border-bottom-right-radius: 5px; /* Different rounding for "tail" */
+        }
+        .chat-input-area {
+            display: flex;
+            padding: 15px;
+            border-top: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+        .chat-input-area input[type="text"] {
+            flex-grow: 1;
+            padding: 10px 15px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            margin-right: 10px;
+            font-size: 1em;
+        }
+        .chat-input-area input[type="text"]:focus {
+            outline: none;
+            border-color: #ff7eb9;
+            box-shadow: 0 0 0 2px rgba(255, 126, 185, 0.3);
+        }
+        .chat-input-area button {
+            padding: 10px 20px;
+            background-color: #ff7eb9;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .chat-input-area button:hover {
+            background-color: #ff5ca8;
+        }
+
+        /* Suggestion button styles */
+        .suggestion-buttons button {
+            background-color: #fff;
+            color: #ff7eb9;
+            border: 1px solid #ff7eb9;
+            padding: 8px 15px;
+            border-radius: 15px;
+            margin: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s;
+        }
+        .suggestion-buttons button:hover {
+            background-color: #ff7eb9;
+            color: #fff;
+        }
+        .final-suggestion {
+            background-color: #fdf6ff;
+            border: 1px dashed #ffc0e5;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 8px;
+        }
+        .final-suggestion strong { color: #d63384; }
+
+    </style>
+     <script>
+        (function() { // Refresh redirect script
+            if (window.performance && performance.navigation.type === 1) {
+                console.info("Page (chat.html) was reloaded. Redirecting to index.html.");
+                window.location.href = 'index.html';
+            }
+        })();
+    </script>
+</head>
+<body class="chat-page"> <!-- Added class for potential specific body styling -->
+    <div class="chat-container">
+        <div class="chat-header">
+            Let's Plan Our Date!
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <!-- Messages will be added here by JavaScript -->
+        </div>
+        <form class="chat-input-area" id="chatForm">
+            <input type="text" id="userInput" placeholder="Type your message..." autocomplete="off">
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <script src="chat.js"></script> <!-- We'll create this next -->
+</body>
+</html>
